@@ -9,12 +9,26 @@ class MyApp extends React.Component {
     {
       super();
       this.state = { todo: taskjason };
+      this.handlechange=this.handlechange.bind(this)
     }
+  }
+  handlechange(id)
+  {
+    this.setState(prevstate => {
+      const updatedtodo = prevstate.todo.map(itr => {
+      if(itr.id ==id)
+      {itr.completed=!itr.completed
+      }
+      return itr
+    })
+    return {todo:updatedtodo}
+     })
   }
   render() {
     const taskcomponemt = this.state.todo.map(task => (
-      <Task key={task.id} task={task} />
+      <Task key={task.id} task={task}  handlechange={this.handlechange} />
     ));
+  
     return (
       <div>
         <Nav />
