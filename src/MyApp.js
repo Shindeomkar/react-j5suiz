@@ -3,8 +3,17 @@ import Nav from './components/Nav.js';
 import MainContent from './components/MainContent';
 import Task from './components/Task.js';
 import taskjason from './components/taskjason';
-function MyApp() {
-const taskcomponemt=taskjason.map(task => <Task task={task}/>)
+import './style.css';
+class MyApp extends React.Component{
+    constructor()
+  {
+    {
+      super()
+      this.state={todo:taskjason}
+    }
+  }
+render(){
+  const taskcomponemt=this.state.todo.map(task => <Task task={task}/>)
 return(
   <div>
   <Nav />
@@ -13,4 +22,6 @@ return(
   </div>
 )
 }
+}
+
 export default MyApp;
